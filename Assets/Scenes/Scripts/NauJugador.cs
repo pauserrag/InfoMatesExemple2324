@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -48,6 +49,14 @@ public class NauJugador : MonoBehaviour
 
 
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shoot2();
+
+
+        }
+
+
 
         transform.position = novaPos;
 
@@ -60,5 +69,13 @@ public class NauJugador : MonoBehaviour
 
         GameObject bala = Instantiate(Resources.Load("Prefabs/bala") as GameObject);
         bala.transform.position = this.transform.position;
+        bala.transform.position = this.transform.position + new Vector3(-0.2f, 0.0f, 0.0f);
+
+    }
+    private void shoot2()
+    {
+
+        GameObject bala = Instantiate(Resources.Load("Prefabs/bala") as GameObject);
+        bala.transform.position = this.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
     }
 }
