@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class NauJugador : MonoBehaviour
 {
@@ -41,11 +42,23 @@ public class NauJugador : MonoBehaviour
         novaPos.x = Mathf.Clamp(novaPos.x, limiteizqX, limitederX);
         novaPos.y = Mathf.Clamp(novaPos.y, limiteizqY, limitederY);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shoot();
+
+
+        }
 
         transform.position = novaPos;
+
 
         //print(novaPos);
 
 
+    }
+    private void shoot() {
+
+        GameObject bala = Instantiate(Resources.Load("Prefabs/bala") as GameObject);
+        bala.transform.position = this.transform.position;
     }
 }
