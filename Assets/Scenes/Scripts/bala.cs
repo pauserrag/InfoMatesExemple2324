@@ -6,6 +6,7 @@ public class bala : MonoBehaviour
 {
     public float velocity = 5f;
     public float maxY;
+    public GameObject bullets_1;
 
 
     void Start()
@@ -22,5 +23,12 @@ public class bala : MonoBehaviour
         transform.position = novaPos;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if (novaPos.y > maxY) { Destroy(gameObject); }
+    }
+    private void OnTriggerEnter2D(Collider2D objecteTocat)
+    {
+        if (objecteTocat.tag == "numero") { 
+        Destroy(gameObject);
+        
+        }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class NauJugador : MonoBehaviour
 {
+    public GameObject nau;
     public float _velNau;
     public float velocidad;
 
@@ -84,8 +85,22 @@ public class NauJugador : MonoBehaviour
         }
 
     }
-
-    
+    private void OnTriggerEnter2D(Collider2D objecteTocat)//quan la nau toqui un objecte es cridara el metode   
+    {
+        if(objecteTocat.tag == "numero")
+        {
+            Destroy(gameObject);
+        }
+        //objecteTocat = objecte que s'ha tocat 
         
 
-}
+
+    }
+    
+        
+    }
+
+
+
+
+
