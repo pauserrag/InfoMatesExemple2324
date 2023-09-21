@@ -21,11 +21,27 @@ public class NauJugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        movimentNau();
+        shoot();
+        shoot2();
+        
+
+
+
+
+
+        //print(novaPos);
+
+
+    }
+    private void movimentNau()
+    {
+
         float movVertical = Input.GetAxis("Vertical");
         float movHoritzontal = Input.GetAxis("Horizontal");
 
         SpriteRenderer spriterenderer = GetComponent<SpriteRenderer>();
-        float anchura = spriterenderer.bounds.size.x /2;
+        float anchura = spriterenderer.bounds.size.x / 2;
         float altura = spriterenderer.bounds.size.y / 2;
 
 
@@ -38,44 +54,38 @@ public class NauJugador : MonoBehaviour
         Vector2 movimiento = new Vector2(movHoritzontal, movVertical);
 
         Vector2 novaPos = transform.position;
-        novaPos +=  movimiento * velocidad * Time.deltaTime;
+        novaPos += movimiento * velocidad * Time.deltaTime;
+        transform.position = novaPos;
 
         novaPos.x = Mathf.Clamp(novaPos.x, limiteizqX, limitederX);
         novaPos.y = Mathf.Clamp(novaPos.y, limiteizqY, limitederY);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            shoot();
-
-
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            shoot2();
-
-
-        }
-
-
-
-        transform.position = novaPos;
-
-
-        //print(novaPos);
-
-
     }
     private void shoot() {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
 
-        GameObject bala = Instantiate(Resources.Load("Prefabs/bala") as GameObject);
-        bala.transform.position = this.transform.position;
-        bala.transform.position = this.transform.position + new Vector3(-0.2f, 0.0f, 0.0f);
+            GameObject bala = Instantiate(Resources.Load("Prefabs/bala") as GameObject);
+            bala.transform.position = this.transform.position;
+            bala.transform.position = this.transform.position + new Vector3(-0.2f, 0.0f, 0.0f);
+
+
+
+        }
 
     }
     private void shoot2()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
 
-        GameObject bala = Instantiate(Resources.Load("Prefabs/bala") as GameObject);
-        bala.transform.position = this.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
+            GameObject bala = Instantiate(Resources.Load("Prefabs/bala") as GameObject);
+            bala.transform.position = this.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
+
+        }
+
     }
+
+    
+        
+
 }
