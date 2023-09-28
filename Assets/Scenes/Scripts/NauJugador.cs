@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class NauJugador : MonoBehaviour
 {
     public GameObject nau;
+    public GameObject _PrefabExplosio;
     public float _velNau;
     public float velocidad;
 
@@ -66,6 +67,7 @@ public class NauJugador : MonoBehaviour
         {
 
             GameObject bala = Instantiate(Resources.Load("Prefabs/bala") as GameObject);
+
             bala.transform.position = this.transform.position;
             bala.transform.position = this.transform.position + new Vector3(-0.2f, 0.0f, 0.0f);
 
@@ -89,7 +91,11 @@ public class NauJugador : MonoBehaviour
     {
         if(objecteTocat.tag == "numero")
         {
+            GameObject explosio = Instantiate(_PrefabExplosio);
+            explosio.transform.position = transform.position;
+
             Destroy(gameObject);
+            
         }
         //objecteTocat = objecte que s'ha tocat 
         
